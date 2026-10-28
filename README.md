@@ -26,12 +26,31 @@ docker run --rm syrian2012/php-benchmark:latest
 
 No build step is required when using the pre‑built image.
 
+Available tags (multi‑arch: `linux/amd64` + `linux/arm64`):
+
+| Tag | PHP | Base image |
+|---|---|---|
+| `1.1`, `latest` | 8.5.12 | `php:8.5-cli` |
+| `1.0` | 8.4.20 | `php:8.4-cli` |
+
+Source mirrors: [GitLab `devops/php-benchmark`](https://gitlab.com/haidar_ops/php-benchmark) ·
+[GitHub `syrian2012/php-perf-test`](https://github.com/syrian2012/php-perf-test)
+
 ## Build (optional)
 
 If you prefer to build the image locally from the source, run this from the project root (where the `Dockerfile` and this `README` live):
 
 ```bash
 docker build -t php-perf-test .
+```
+
+Or use the `Makefile` (build, smoke‑run, version check, multi‑arch push):
+
+```bash
+make build          # docker build -t syrian2012/php-benchmark:dev .
+make test           # run the benchmark, print Total/Average
+make versions       # base image PHP vs runtime PHP
+make push TAG=1.1   # multi‑arch buildx push of :1.1 and :latest
 ```
 
 ## Run

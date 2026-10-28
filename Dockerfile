@@ -1,5 +1,5 @@
 # Use official PHP CLI image
-FROM php:8.4-cli AS runner
+FROM php:8.5-cli AS runner
 
 # Workdir for your script(s)
 WORKDIR /app
